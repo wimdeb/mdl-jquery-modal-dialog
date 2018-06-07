@@ -23,6 +23,12 @@
     </style>
 </head>
 <body>
+<span id="lorem" style="display: none">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</span>
+<span id="action-dialog" style="display: none">
+    This dialog can be closed by pressing ESC or clicking outside of the dialog.<br/>Pressing "YAY" will fire the configured action.</span>
+</span>
 <button id="show-info" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
     Show Info
 </button>
@@ -33,21 +39,15 @@
         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
     Show not cancelable
 </button>
-<button id="show-loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-    Show loading
-</button>
 <script>
-    var lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
     $('#show-info').click(function () {
-        showDialog({
-            title: 'Information',
-            text: lorem
+        $('#lorem').mdlModalDialog({
+            title: 'Information'
         })
     });
     $('#show-action').click(function () {
-        showDialog({
+         $('#action-dialog').mdlModalDialog({
             title: 'Action',
-            text: 'This dialog can be closed by pressing ESC or clicking outside of the dialog.<br/>Pressing "YAY" will fire the configured action.',
             negative: {
                 title: 'Nope'
             },
@@ -60,9 +60,8 @@
         });
     });
     $('#show-not-cancelable').click(function () {
-        showDialog({
+        $('<span>This dialog can only be closed by using one of the buttons.</span>').mdlModalDialog({
             title: 'Not cancelable',
-            text: 'This dialog can only be closed by using one of the buttons.',
             negative: {
                 title: 'Nope'
             },
@@ -71,12 +70,6 @@
             },
             cancelable: false
         });
-    });
-    $('#show-loading').click(function () {
-        showLoading();
-        setTimeout(function () {
-            hideLoading();
-        }, 3000);
     });
 </script>
 </body>
