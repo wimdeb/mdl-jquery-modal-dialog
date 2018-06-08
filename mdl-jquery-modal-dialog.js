@@ -1,5 +1,5 @@
 (function ( $ ) {
- 
+
     $.fn.mdlModalDialog = function(options) {
         options = $.extend({
             id: 'orrsDiag',
@@ -16,8 +16,8 @@
 
         var originalElement = {
             el: this,
-			parent: this.parent(),
-			index: this.parent().children().index( this ),
+            parent: this.parent(),
+            index: this.parent().children().index( this ),
             originalCss: this.attr('style')
         };
 
@@ -34,9 +34,9 @@
         if (options.title != null) {
             $('<h5>' + options.title + '</h5>').appendTo(content);
         }
-       
-        this.show().appendTo($('<p>')).appendTo(content);
-        
+
+        this.css('display', '').appendTo($('<p>')).appendTo(content);
+
         if (options.neutral || options.negative || options.positive) {
             var buttonBar = $('<div class="mdl-card__actions dialog-button-bar"></div>');
             if (options.neutral) {
@@ -113,11 +113,11 @@
 
             var next = originalElement.parent.children().eq( originalElement.index );
 
-		    // Don't try to place the dialog next to itself (#8613)
-		    if ( next.length && next[ 0 ] !== originalElement.el ) {
-			    next.before( originalElement.el  );
-		    } else {
-			    originalElement.parent.append( originalElement.el  );
+            // Don't try to place the dialog next to itself (#8613)
+            if ( next.length && next[ 0 ] !== originalElement.el ) {
+                next.before( originalElement.el  );
+            } else {
+                originalElement.parent.append( originalElement.el  );
             }
 
             originalElement.el.attr('style', originalElement.originalCss);
