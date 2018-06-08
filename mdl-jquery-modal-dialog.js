@@ -111,7 +111,7 @@
         setTimeout(function () {
             dialog.detach();
 
-            next = originalElement.parent.children().eq( originalElement.index );
+            var next = originalElement.parent.children().eq( originalElement.index );
 
 		    // Don't try to place the dialog next to itself (#8613)
 		    if ( next.length && next[ 0 ] !== originalElement.el ) {
